@@ -16,14 +16,14 @@ const resolvers = {
     Query: {
         // todo
 
-        getPc: async (_, args) => {
+        getPc: async (_, { keyword }) => {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
                 await page.goto(encodeURI('http://bachors.com'))
                 
                 const result = await page.evaluate(() => {
-                    const detail = 'anu'
+                    const detail = []
                     
                     return detail
                 })
