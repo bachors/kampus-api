@@ -15,9 +15,8 @@ const typeDef = gql`
 const resolvers = {
     Query: {
         // todo
-        getListMahasiswa: (_, args) => [],
 
-        getMahasiswa: async (_, args) => {
+        getPc: async (_, args) => {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
