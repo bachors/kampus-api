@@ -52,7 +52,9 @@ const resolvers = {
                     return detail
                 })*/
 
-                return "anu"
+                return {
+					json: "anu"
+				}
 
 				  await page.waitFor(1000);
 				  
