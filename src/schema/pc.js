@@ -46,12 +46,10 @@ const resolvers = {
                     fetch(myRequest);
                 },{keyword});
 
-                var bodyHTML = await page.evaluate(() => document.body.innerHTML);
-				
-				var obb = JSON.parse(bodyHTML);
+                let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 
                 return [{
-                    "json": obb.result.html
+                    "json": bodyHTML
                 }]
 
                 await page.waitFor(1000);
