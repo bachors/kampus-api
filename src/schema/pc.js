@@ -20,7 +20,7 @@ const resolvers = {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
-                await page.goto(encodeURI(keyword))
+                await page.goto(encodeURI("https://pcpartpicker.com/products/cpu/fetch/?xslug=&location=&search=&qid=1&scr=1&scr_vw=1903&scr_vh=726&scr_dw=1920&scr_dh=1080&scr_daw=1920&scr_dah=1050&scr_ddw=1903&scr_ddh=4064&ms=1580870369860"))
 				
 				await page.setRequestInterception(true);
 				  page.on("request", request => {
@@ -41,16 +41,9 @@ const resolvers = {
 					  headers: myHeaders
 					};
 
-					var myRequest = new Request(keyword, myInit);
+					var myRequest = new Request("https://pcpartpicker.com/products/cpu/fetch/?xslug=&location=&search=&qid=1&scr=1&scr_vw=1903&scr_vh=726&scr_dw=1920&scr_dh=1080&scr_daw=1920&scr_dah=1050&scr_ddw=1903&scr_ddh=4064&ms=1580870369860", myInit);
 					fetch(myRequest);
 				  });
-                
-             /*   const result = await page.evaluate(() => {
-					const detail = { nama: "aa" }
-					
-                    
-                    return detail
-                })*/
 				
 				let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 
