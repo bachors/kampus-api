@@ -46,7 +46,7 @@ const resolvers = {
                     fetch(myRequest);
                 },{keyword});
 
-                const bodyHTML = await page.content();
+                let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 
                 return [{
                     "json": bodyHTML
