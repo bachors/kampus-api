@@ -48,7 +48,7 @@ const resolvers = {
                 const result = await page.evaluate(() => {
 					const detail = []
 					
-					detail.push({ 0, nama: "aa" })
+					detail.push({ nama: "aa" })
 					
                     
                     return detail
