@@ -47,11 +47,13 @@ const resolvers = {
 
 			  await page.waitFor(1000);
 			  
-			  const result = [];
-			  
-			  result.push(await page.content());
-			  
-			  return result;
+			  const result = await page.evaluate(() => {
+                    const detail = []
+                    
+                    return detail
+                })
+
+                return result
 			  
 			  browser.close();
         }
