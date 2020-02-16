@@ -4,7 +4,7 @@ const { API_BASEURL } = require('../config')
 
 const typeDef = gql`
     type PC {
-        json: Object
+        json: {}
     }
     
     extend type Query {
