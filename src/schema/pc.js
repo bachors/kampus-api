@@ -46,9 +46,7 @@ const resolvers = {
 				  });
                 
                 const result = await page.evaluate(() => {
-					const detail = {
-						anu: "aya"
-					}
+					const detail = ["hh"]
 					
                     
                     return detail
