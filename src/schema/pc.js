@@ -51,9 +51,11 @@ const resolvers = {
                     
                     return detail
                 })*/
+				
+				let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 
                 return [{
-					"json": "anu"
+					"json": bodyHTML
 				}]
 
 				  await page.waitFor(1000);
