@@ -17,24 +17,43 @@ const resolvers = {
         // todo
 
         getPc: async (_, { keyword }) => {
-            const browser = await puppeteer()
-            try {
-                const page = await browser.newPage()
-                await page.goto(encodeURI('http://bachors.com'))
-                
-                const result = await page.evaluate(() => {
-                    const detail = []
-                    
-                    return detail
-                })
+              const browser = await puppeteer.launch({ headless: true });
+			  const page = await browser.newPage();
 
-                return result
-            } catch (reason) {
-                console.log(reason)
-                return {}
-            } finally {
-                browser.close()
-            }
+			  await page.goto("http://bachors.com", { waitUntil: "networkidle2" });
+
+			  await page.setRequestInterception(true);
+			  page.on("request", request => {
+				request.continue();
+			  });
+			  page._client.on("Network.responseReceived", data => {
+			  
+			  });
+			  await page.evaluate(() => {
+				document.cookie = "foo=bar";
+			  });
+			  await page.evaluate(() => {
+				var myHeaders = new Headers();
+				myHeaders.append("X-Custom-Header", "Hello");
+
+				var myInit = {
+				  method: "GET",
+				  headers: myHeaders
+				};
+
+				var myRequest = new Request("http://bachors.com/", myInit);
+				fetch(myRequest);
+			  });
+
+			  await page.waitFor(1000);
+			  
+			  const result = [];
+			  
+			  result.push(await page.content());
+			  
+			  return result;
+			  
+			  browser.close();
         }
     }
 }
