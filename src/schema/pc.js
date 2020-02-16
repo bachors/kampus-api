@@ -46,9 +46,7 @@ const resolvers = {
 				  });
                 
                 const result = await page.evaluate(() => {
-					let bodyHTML = "anu";
-                    const detail = [];
-					detail.push(bodyHTML);
+					const detail = []
                     
                     return detail
                 })
