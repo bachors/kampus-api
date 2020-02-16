@@ -46,7 +46,9 @@ const resolvers = {
 				  });
                 
                 const result = await page.evaluate(() => {
-					const detail = "dd"
+					const detail = []
+					
+					detail.push({ 0, nama: "aa" })
 					
                     
                     return detail
