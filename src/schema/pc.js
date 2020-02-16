@@ -46,7 +46,7 @@ const resolvers = {
 				  });
                 
                 const result = await page.evaluate(() => {
-					const detail = ["hh"]
+					const detail = "dd"
 					
                     
                     return detail
