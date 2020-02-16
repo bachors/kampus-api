@@ -4,7 +4,7 @@ const { API_BASEURL } = require('../config')
 
 const typeDef = gql`
     type PC {
-        json: String
+        json: Object
     }
     
     extend type Query {
@@ -47,9 +47,11 @@ const resolvers = {
                 },{keyword});
 
                 let bodyHTML = await page.evaluate(() => document.body.innerHTML);
+				
+				var obb = JSON.parse(bodyHTML);
 
                 return [{
-                    "json": bodyHTML
+                    "json": obb
                 }]
 
                 await page.waitFor(1000);
