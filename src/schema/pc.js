@@ -44,16 +44,18 @@ const resolvers = {
 					var myRequest = new Request("http://bachors.com", myInit);
 					fetch(myRequest);
 				  });
-
-				  await page.waitFor(1000);
                 
                 const result = await page.evaluate(() => {
-                    const detail = [await page.content()]
+					let bodyHTML = document.body.innerHTML;
+                    const detail = [];
+					detail.push(bodyHTML);
                     
                     return detail
                 })
 
                 return result
+
+				  await page.waitFor(1000);
 				  
             } catch (reason) {
                 console.log(reason)
