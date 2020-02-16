@@ -45,16 +45,14 @@ const resolvers = {
 					fetch(myRequest);
 				  });
                 
-                const result = await page.evaluate(() => {
-					const detail = []
-					
-					detail.push({ nama: "aa" })
+             /*   const result = await page.evaluate(() => {
+					const detail = { nama: "aa" }
 					
                     
                     return detail
-                })
+                })*/
 
-                return result
+                return []
 
 				  await page.waitFor(1000);
 				  
