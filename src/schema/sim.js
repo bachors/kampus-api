@@ -34,14 +34,12 @@ const resolvers = {
 					};
 
 					// Request modified... finish sending! 
+					 request.continue();
 					interceptedRequest.continue(datag);
 				});
                 
                 await page.goto("https://ceebydith.com/cek-hlr-lokasi-hp.html")
 				
-                page.on("request", request => {
-                    request.continue();
-                });
                 page._client.on("Network.responseReceived", data => {
 
                 });
