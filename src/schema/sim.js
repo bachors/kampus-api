@@ -28,13 +28,13 @@ const resolvers = {
 
 					// Here, is where you change the request method and 
 					// add your post data
-					var data = {
+					var datag = {
 						method: "POST",
                         postData: "msisdn=087743593469"
 					};
 
 					// Request modified... finish sending! 
-					interceptedRequest.continue(data);
+					interceptedRequest.continue(datag);
 				});
                 
                 await page.goto("https://ceebydith.com/cek-hlr-lokasi-hp.html")
