@@ -24,7 +24,7 @@ const resolvers = {
 
                 await page.setRequestInterception(true);
                 
-                page.on('request', interceptedRequest => {
+                page.on("request", interceptedRequest => {
 
 					// Here, is where you change the request method and 
 					// add your post data
