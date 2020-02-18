@@ -65,7 +65,7 @@ const resolvers = {
                 let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 
                 return [{
-                    "json": JSON.stringify(bodyHTML)
+                    "json": "aaadd"
                 }]
 
                 await page.waitFor(1000);
