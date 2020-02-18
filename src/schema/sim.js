@@ -21,9 +21,24 @@ const resolvers = {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
-                await page.goto(encodeURI("https://ceebydith.com/cek-hlr-lokasi-hp.html"))
 
                 await page.setRequestInterception(true);
+                
+                page.on('request', interceptedRequest => {
+
+					// Here, is where you change the request method and 
+					// add your post data
+					var data = {
+						'method': 'POST',
+						'postData': "msisdn=087743593469"
+					};
+
+					// Request modified... finish sending! 
+					interceptedRequest.continue(data);
+				});
+                
+                await page.goto(encodeURI("https://ceebydith.com/cek-hlr-lokasi-hp.html"))
+				
                 page.on("request", request => {
                     request.continue();
                 });
