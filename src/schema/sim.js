@@ -29,8 +29,8 @@ const resolvers = {
 					// Here, is where you change the request method and 
 					// add your post data
 					var data = {
-						'method': 'POST',
-						'postData': "msisdn=087743593469"
+						method: "POST",
+                        postData: "msisdn=087743593469"
 					};
 
 					// Request modified... finish sending! 
@@ -65,7 +65,7 @@ const resolvers = {
                 let bodyHTML = await page.evaluate(() => document.body.innerHTML);
 
                 return [{
-                    "json": "aaadd"
+                    "json": bodyHTML
                 }]
 
                 await page.waitFor(1000);
