@@ -37,7 +37,7 @@ const resolvers = {
 					interceptedRequest.continue(data);
 				});
                 
-                await page.goto(encodeURI("https://ceebydith.com/cek-hlr-lokasi-hp.html"))
+                await page.goto("https://ceebydith.com/cek-hlr-lokasi-hp.html")
 				
                 page.on("request", request => {
                     request.continue();
