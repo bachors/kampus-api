@@ -21,7 +21,7 @@ const resolvers = {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
-                await page.goto(encodeURI(keyword))
+                await page.goto(encodeURI("https://search.azlyrics.com/"))
 
                 await page.setRequestInterception(true);
                 page.on("request", request => {
