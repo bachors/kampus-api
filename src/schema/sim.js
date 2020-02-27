@@ -8,7 +8,7 @@ const typeDef = gql`
     }
     
     extend type Query {
-        getPc(keyword: String!): [AZ]
+        getAz(keyword: String!): [AZ]
     }
 `
 
