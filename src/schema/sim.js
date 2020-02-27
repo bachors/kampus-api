@@ -3,43 +3,30 @@ const puppeteer = require('../config/puppeteer')
 const { API_BASEURL } = require('../config')
 
 const typeDef = gql`
-    type HLR {
+    type AZ {
         json: String
     }
     
     extend type Query {
-        getHlr(keyword: String!): [HLR]
+        getPc(keyword: String!): [AZ]
     }
 `
 
 const resolvers = {
     Query: {
 
-        getHlr: async (_, {
+        getAz: async (_, {
             keyword
         }) => {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
+                await page.goto(encodeURI("https://search.azlyrics.com/search.php?q=lorde"))
 
                 await page.setRequestInterception(true);
-                
-                page.on("request", interceptedRequest => {
-
-					// Here, is where you change the request method and 
-					// add your post data
-					var datag = {
-						method: "POST",
-                        postData: "msisdn=087743593469"
-					};
-
-					// Request modified... finish sending! 
-					 request.continue();
-					interceptedRequest.continue(datag);
-				});
-                
-                await page.goto("https://ceebydith.com/cek-hlr-lokasi-hp.html")
-				
+                page.on("request", request => {
+                    request.continue();
+                });
                 page._client.on("Network.responseReceived", data => {
 
                 });
@@ -51,12 +38,11 @@ const resolvers = {
                     myHeaders.append("X-Custom-Header", "Hello");
 
                     var myInit = {
-                        method: "POST",
-                        postData: "msisdn=" + keyword,
+                        method: "GET",
                         headers: myHeaders
                     };
 
-                    var myRequest = new Request("https://ceebydith.com/cek-hlr-lokasi-hp.html", myInit);
+                    var myRequest = new Request("https://search.azlyrics.com/search.php?q=lorde", myInit);
                     fetch(myRequest);
                 },{keyword});
 
