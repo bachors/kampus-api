@@ -21,7 +21,7 @@ const resolvers = {
             const browser = await puppeteer()
             try {
                 const page = await browser.newPage()
-                await page.goto(encodeURI("https://search.azlyrics.com/search.php?q=lorde"))
+                await page.goto(encodeURI(keyword))
 
                 await page.setRequestInterception(true);
                 page.on("request", request => {
@@ -42,7 +42,7 @@ const resolvers = {
                         headers: myHeaders
                     };
 
-                    var myRequest = new Request("https://search.azlyrics.com/search.php?q=lorde", myInit);
+                    var myRequest = new Request(keyword, myInit);
                     fetch(myRequest);
                 },{keyword});
 
